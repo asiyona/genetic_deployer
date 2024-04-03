@@ -16,7 +16,7 @@ public:
 	DNA(int a_len);
 	DNA(const StoresKeys& a_keys, const int a_len);
 	float GetFitness(const StoresMap& a_stores) const;
-	void Mutate(const float& a_mutationRate, const float& a_displacmentRate, const StoresMap& a_stores);
+	void Mutate(const float& a_mutationRate, const float& a_typeMutationRate, const float& a_displacmentRate, const StoresMap& a_stores);
 	StoreKey GetKey(const size_t a_idx) const;
 	void SetKey(const size_t a_idx, const StoreKey& a_key);
 	void Print();

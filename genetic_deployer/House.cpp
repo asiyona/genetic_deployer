@@ -28,3 +28,17 @@ const float House::GetConsumption() const
 {
 	return m_consumption;
 }
+
+
+std::pair<float, float> FindGridDimmenssions(const HousesContainer& a_houses)
+{
+	float xMax{ 0 };
+	float yMax{ 0 };
+
+	for (auto houseItr{ a_houses.begin() }; houseItr != a_houses.end(); ++houseItr)
+	{
+		xMax = std::max(houseItr->second.GetAddress().xCoord, xMax);
+		yMax = std::max(houseItr->second.GetAddress().yCoord, yMax);
+	}
+	return { xMax,yMax };
+}

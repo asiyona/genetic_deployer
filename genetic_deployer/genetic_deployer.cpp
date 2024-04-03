@@ -2,44 +2,55 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-
+#include "config.h"
 #include "Parser.h"
 //#include "Deployer.h"
 #include "House.h"
 #include "Store.h"
 #include "Population.h"
+#include "Deployer.h"
+
+const std::vector<std::string> COL_NAMES{
+	"n_stores",
+	"generation",
+	"generation_avg_fit",
+	"gene_idx",
+	"gene_fit",
+	"x_store",
+	"y_store",
+	"store_type"
+};
 
 int main()
 {
-	//std::cout << "Hello World!\n";
-	//GenerateHousesFile("House_distribution.csv", 600, 800, 10, 2000);
-	//Parser pars{ "House_distribution.csv" };
-	//HousesContainer houses = pars.Parse();
-	//Deployer deployer{ houses };
-	//StoresContainer stores = deployer.Deploy();
-	//std::cout << (CheckFullCoverage(stores, houses) ? "Fully Covered :P " : "Not fully covered!!!") << "\n";
-	//GenerateStoresFile(stores, "store.csv");
-	//std::cout << "Bye!";
-
+	std::ofstream file;
 	Parser pars{ "House_distribution.csv" };
-	HousesContainer houses = pars.Parse();
-	//Store s1{ Address{0,0},400,houses };
-	//Store s2{ Address{800,800},400,houses };
-	//Store s3{ Address{300,300},50,houses };
-	StoreKey k1{ 0,0,StoreType::BIG };
-	StoreKey k2{ 800,800,StoreType::BIG };
-	StoreKey k3{ 300,300,StoreType::SMALL };
-	StoresMap stores{ 600,800,20,houses };
+	HousesContainer houses = pars.Parse(); std::cout << "Houses created" << "\n";
 
-	//stores.insert({ k1,Store{ Address{0,0},StoreType::BIG,houses } });
-	//stores.insert({ k2,Store{ Address{800,800},StoreType::BIG,houses } });
-	//stores.insert({ k3,Store{ Address{300,300},StoreType::BIG,houses } });
-	//stores;
-	Population pop{ 3000, 8, stores };
-	pop.CalcPopulationFitness();
+	{
+		std::ofstream resetFile{ "evolotionLog.csv" };
+		WriteLineCsv(resetFile, COL_NAMES); 
+	}
+	for (size_t storeNum = 32; storeNum < 33; storeNum+=3)
+	{
+		GeneticLogger logger{ "evolotionLog.csv" };
+		Deployer deployer{ houses, storeNum ,logger };
+		std::list<Store> best_stores = deployer.Deploy();
+		
+	}
 
-	std::cout << RoundToGrid(1243.123, 3) << "\n";
-	std::cout << RoundToGrid(124.7123, 5) << "\n";
-	std::cout << RoundToGrid(1243.723, 2.1) << "\n";
+	//Population pop{ 3000, 8, stores };
+	//pop.CalcPopulationFitness();
+	//for (size_t i = 0; i < 3000; i++)
+	//{
+	//	DNA gene = pop.NaturalSelectionDraw();
+	//	//std::cout << "gene #" << i << ":\n";
+	//	//std::cout << "pre mutate: ";
+	//	//gene.Print();
+	//	gene.Mutate(0.3 ,30, stores);
+	//	//std::cout << "post mutate: ";
+	//	//gene.Print();
+	//	//std::cout << std::endl;
+	//}
 }
 

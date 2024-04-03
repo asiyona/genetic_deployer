@@ -23,3 +23,5 @@ private:
 
 //TODO: where should this line be?
 using HousesContainer = std::unordered_map<House::Id, House>;
+
+std::pair<float, float> FindGridDimmenssions(const HousesContainer& a_houses);

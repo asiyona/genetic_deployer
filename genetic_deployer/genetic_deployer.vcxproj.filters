@@ -45,6 +45,12 @@
     <ClCompile Include="Population.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Deployer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneticLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h">
@@ -75,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Population.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Deployer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneticLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

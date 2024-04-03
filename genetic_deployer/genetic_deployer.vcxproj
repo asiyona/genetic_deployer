@@ -128,7 +128,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Address.cpp" />
+    <ClCompile Include="Deployer.cpp" />
     <ClCompile Include="DNA.cpp" />
+    <ClCompile Include="GeneticLogger.cpp" />
     <ClCompile Include="genetic_deployer.cpp" />
     <ClCompile Include="House.cpp" />
     <ClCompile Include="Parser.cpp" />
@@ -141,7 +143,9 @@
   <ItemGroup>
     <ClInclude Include="Address.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="Deployer.h" />
     <ClInclude Include="DNA.h" />
+    <ClInclude Include="GeneticLogger.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Population.h" />

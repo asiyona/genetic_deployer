@@ -15,8 +15,8 @@ StoresMap::StoresMap(const float a_gridWidth, const float a_gridHeight, const fl
 	//		//m_map.insert({ {x, y, StoreType::BIG}, Store{x,y,StoreType::SMALL, a_houses} });
 	//	}
 	//}
-	size_t nCols = a_gridWidth / a_gridSpacing;
-	size_t nRows = a_gridHeight / a_gridSpacing;
+	size_t nCols = a_gridWidth / a_gridSpacing + 1;
+	size_t nRows = a_gridHeight / a_gridSpacing + 1;
 	m_map.resize(nRows);
 	for (size_t yIdx{ 0 }; yIdx < nRows; ++yIdx)
 	{
@@ -56,6 +56,15 @@ StoresMap::~StoresMap()
 }
 
 
+float RoundToGrid(const float& a_num, const float& a_gridSpacing, const float& a_gridMaxVal)
+{
+	auto num = RoundToGrid(a_num, a_gridSpacing);
+	if (num <= 0)
+		return 0;
+	if (num >= a_gridMaxVal)
+		return a_gridMaxVal;
+	return num;
+}
 float RoundToGrid(const float& a_num, const float& a_gridSpacing)
 {
 	return std::round((long(a_num / a_gridSpacing) * float(a_gridSpacing)) * 1000)/1000.;

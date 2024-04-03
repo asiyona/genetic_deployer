@@ -9,7 +9,7 @@ public:
 	StoresMap() = delete;
 	StoresMap(const float a_gridWidth, const float a_gridHeight, const float a_gridSpacing, const HousesContainer& a_houses);
 	StoresMap(const StoresMap&) = delete;
-	StoresMap& operator=(const StoresMap&) = delete;
+	//StoresMap& operator=(const StoresMap&) = delete;
 	const Store& at(const StoreKey& a_key) const;
 	void insert(const std::pair<StoreKey, const Store&>& a_pair);
 	float GetSpacing() const;
@@ -32,4 +32,5 @@ private:
 };
 
 
+float RoundToGrid(const float& a_num, const float& a_gridSpacing, const float& a_gridMaxVal);
 float RoundToGrid(const float& a_num, const float& a_gridSpacing);
